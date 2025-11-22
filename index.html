@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu almacen vecino </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #e74c3c;">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#inicio">
+                <i class="fa-solid fa-store me-2"></i>Tu Almacén Vecino
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#productos">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contenedor-carrito">Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link" id="navbar-cliente">
+                            <i class="fa-solid fa-user me-1"></i>
+                            <span id="nombre-usuario">Invitado</span>
+                        </span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="#contenedor-carrito">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="badge bg-warning text-dark position-absolute top-0 start-100 translate-middle"
+                                  id="badge-carrito" style="display: none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal de Bienvenida -->
+    <div class="modal fade" id="modalBienvenida" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">
+                        <i class="fa-solid fa-hand-wave me-2"></i>¡Bienvenido a Tu Almacén Vecino!
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <p>Por favor, ingresa tus datos para comenzar:</p>
+                    <form id="form-bienvenida">
+                        <div class="mb-3">
+                            <label for="input-nombre" class="form-label">Nombre *</label>
+                            <input type="text" class="form-control" id="input-nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="input-apellido" class="form-label">Apellido *</label>
+                            <input type="text" class="form-control" id="input-apellido" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-solid fa-arrow-right me-2"></i>Ingresar a la Tienda
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-wrapper" id="inicio">
+        <!-- Contenido Principal -->
+        <main class="main-content">
+            <!-- Carousel -->
+            <section class="mb-4">
+                <div id="carouselProductos" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselProductos" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#carouselProductos" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#carouselProductos" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner rounded">
+                        <div class="carousel-item active">
+                            <img src="assets/images/iPhone 12 Pro 128GB.webp" class="d-block w-100" alt="Ofertas Tecnología" style="height: 400px; object-fit: cover;">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                                <h5>Tecnología de Última Generación</h5>
+                                <p>Los mejores productos electrónicos a precios increíbles</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/Bicicleta de Montaña Trek.jpg" class="d-block w-100" alt="Deportes" style="height: 400px; object-fit: cover;">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                                <h5>Deporte y Aventura</h5>
+                                <p>Equípate para tus próximas aventuras</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/Cámara Canon EOS R6.jpg" class="d-block w-100" alt="Fotografía" style="height: 400px; object-fit: cover;">
+                            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-3">
+                                <h5>Fotografía Profesional</h5>
+                                <p>Captura momentos únicos con equipos de calidad</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductos" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProductos" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <h1 class="hero__title">Carrito de Compras</h1>
+                </div>
+            </section>
+
+            <div class="container">
+
+                <!-- Productos -->
+                <section class="featured-products" id="productos">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2 class="featured-products__title mb-0">Productos</h2>
+                        <div class="input-group" style="max-width: 300px;">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-search"></i>
+                            </span>
+                            <input type="text" class="form-control" id="filtro-productos"
+                                   placeholder="Buscar productos..."
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="top"
+                                   title="Filtra productos por nombre">
+                        </div>
+                    </div>
+
+                    <div class="products-grid">
+                    </div>
+
+                </section>
+
+                <!-- Formulario de Datos del Cliente (inicialmente oculto) -->
+                <section class="formulario-cliente d-none" id="formulario-cliente">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Datos de Entrega</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="form-datos-cliente">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nombre-receptor" class="form-label">Nombre quien recibe *</label>
+                                        <input type="text" class="form-control" id="nombre-receptor" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 mb-3">
+                                        <label for="direccion" class="form-label">Dirección *</label>
+                                        <input type="text" class="form-control" id="direccion" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="comuna" class="form-label">Comuna *</label>
+                                        <input type="text" class="form-control" id="comuna" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="region" class="form-label">Región *</label>
+                                        <select class="form-control" id="region" required>
+                                            <option value="">Seleccionar región</option>
+                                            <option value="Región de Arica y Parinacota">Región de Arica y Parinacota</option>
+                                            <option value="Región de Tarapacá">Región de Tarapacá</option>
+                                            <option value="Región de Antofagasta">Región de Antofagasta</option>
+                                            <option value="Región de Atacama">Región de Atacama</option>
+                                            <option value="Región de Coquimbo">Región de Coquimbo</option>
+                                            <option value="Región de Valparaíso">Región de Valparaíso</option>
+                                            <option value="Región Metropolitana">Región Metropolitana</option>
+                                            <option value="Región del Libertador General Bernardo O'Higgins">Región del Libertador General Bernardo O'Higgins</option>
+                                            <option value="Región del Maule">Región del Maule</option>
+                                            <option value="Región de Ñuble">Región de Ñuble</option>
+                                            <option value="Región del Biobío">Región del Biobío</option>
+                                            <option value="Región de La Araucanía">Región de La Araucanía</option>
+                                            <option value="Región de Los Ríos">Región de Los Ríos</option>
+                                            <option value="Región de Los Lagos">Región de Los Lagos</option>
+                                            <option value="Región de Aysén del General Carlos Ibáñez del Campo">Región de Aysén del General Carlos Ibáñez del Campo</option>
+                                            <option value="Región de Magallanes y de la Antártica Chilena">Región de Magallanes y de la Antártica Chilena</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-secondary me-2" onclick="volverAlCarrito()">Volver</button>
+                                    <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Boleta Final (inicialmente oculta) -->
+                <section class="boleta-final d-none" id="boleta-final">
+                    <div class="card">
+                        <div class="card-header bg-success text-white">
+                            <h3><i class="fa-solid fa-check-circle"></i> Compra Realizada con Éxito</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-success mb-4">
+                                <i class="fa-solid fa-envelope"></i> 
+                                <strong>¡Boleta enviada!</strong> Hemos enviado el detalle de tu compra al correo <span id="email-confirmacion"></span>
+                            </div>
+                            
+                            <!-- Detalle de productos -->
+                            <div class="detalle-productos mb-4">
+                                <h4>Detalle de Productos</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Código</th>
+                                                <th>Producto</th>
+                                                <th>Precio Unit.</th>
+                                                <th>Cantidad</th>
+                                                <th>Total Ítem</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-productos-boleta">
+                                            <!-- Se llena dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Resumen de compra -->
+                            <div class="resumen-compra mb-4">
+                                <h4>Resumen de Compra</h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <table class="table table-sm">
+                                            <tr>
+                                                <td><strong>Monto Neto:</strong></td>
+                                                <td class="text-end" id="boleta-neto"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>IVA (19%):</strong></td>
+                                                <td class="text-end" id="boleta-iva"></td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Monto Bruto:</strong></td>
+                                                <td class="text-end" id="boleta-bruto"></td>
+                                            </tr>
+                                            <tr class="table-warning d-none" id="fila-despacho">
+                                                <td><strong>Despacho (5%):</strong></td>
+                                                <td class="text-end" id="boleta-despacho"></td>
+                                            </tr>
+                                            <tr class="table-primary">
+                                                <td><strong>TOTAL FINAL:</strong></td>
+                                                <td class="text-end"><strong id="boleta-total"></strong></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Datos de despacho -->
+                            <div class="datos-despacho">
+                                <h4>Dirección de Despacho</h4>
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <p><strong>Nombre:</strong> <span id="boleta-nombre"></span></p>
+                                        <p><strong>Dirección:</strong> <span id="boleta-direccion"></span></p>
+                                        <p><strong>Comuna:</strong> <span id="boleta-comuna"></span></p>
+                                        <p><strong>Región:</strong> <span id="boleta-region"></span></p>
+                                        <p><strong>Email:</strong> <span id="boleta-email"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <button type="button" class="btn btn-primary" onclick="nuevaCompra()">
+                                    <i class="fa-solid fa-shopping-cart"></i> Nueva Compra
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>Te Vendo</h3>
+                    <p>La plataforma más confiable para comprar y vender productos de segunda mano en Chile.</p>
+                </div>
+                
+                <div class="footer__section">
+                    <h3>Contacto</h3>
+                    <p>📧 hola@tevendo.cl</p>
+                    <p>📞 +56 2 1234 5678</p>
+                    <p>📍 Santiago, Chile</p>
+                </div>
+                <div class="footer__section">
+                    <h3>Síguenos</h3>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link footer__social-link--facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="footer__social-link footer__social-link--twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="footer__social-link footer__social-link--instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2024 Te Vendo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="assets/scripts/script.js"></script>
+</body>
+</html>
